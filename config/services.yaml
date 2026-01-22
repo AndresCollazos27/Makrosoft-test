@@ -19,5 +19,13 @@ services:
     App\:
         resource: '../src/'
 
+    _instanceof:
+        App\Domain\Payment\PaymentMethodCalculatorInterface:
+            tags: ['app.payment_method_calculator']
+
+    App\Domain\Payment\PaymentCalculatorResolver:
+        arguments:
+            $calculators: !tagged_iterator app.payment_method_calculator
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
