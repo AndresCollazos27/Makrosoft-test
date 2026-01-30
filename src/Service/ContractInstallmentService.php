@@ -66,7 +66,7 @@ final class ContractInstallmentService
     public function projectOnly(Contract $contract, int $months): array
     {
         if ($months <= 0) {
-            throw new \InvalidArgumentException('months must be > 0');
+            throw new \InvalidArgumentException('El numero de meses debe ser mayor que cero');
         }
 
         $calculator = $this->resolver->resolve($contract->getMetodoPagoSeleccionado());

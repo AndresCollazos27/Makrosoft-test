@@ -19,12 +19,12 @@ final class ContractInstallmentsController extends AbstractController
     {
         $contract = $contracts->find($id);
         if ($contract === null) {
-            return $this->json(['error' => 'Contract not found'], 404);
+            return $this->json(['error' => 'Contrato no encontrado'], 404);
         }
 
         $months = $this->parseMonths($request);
         if ($months === null) {
-            return $this->json(['error' => 'months must be a positive integer'], 400);
+            return $this->json(['error' => 'El numero de meses debe ser un entero positivo'], 400);
         }
 
         $installments = $service->projectOnly($contract, $months);
@@ -42,12 +42,12 @@ final class ContractInstallmentsController extends AbstractController
     {
         $contract = $contracts->find($id);
         if ($contract === null) {
-            return $this->json(['error' => 'Contract not found'], 404);
+            return $this->json(['error' => 'Contrato no encontrado'], 404);
         }
 
         $months = $this->parseMonths($request);
         if ($months === null) {
-            return $this->json(['error' => 'months must be a positive integer'], 400);
+            return $this->json(['error' => 'El numero de meses debe ser un entero positivo'], 400);
         }
 
         $installments = $service->generateAndPersist($contract, $months);
